@@ -143,6 +143,34 @@ public class SmartCampusSystem {
     }
 
     // Main interactive menu
+    public void displayMenu(){
+            System.out.println("*=====================================*");
+            System.out.println("|                                     |");
+            System.out.println("|    [1] Add Walk-In Participant.     |");
+            System.out.println("|    [2] Cancel Walk-In Check-In.     |");
+            System.out.println("|    [3] Display Walk-In Queue.       |");
+            System.out.println("|    [4] Add VIP Guest                |");
+            System.out.println("|    [5] Remove VIP Guest             |");
+            System.out.println("|    [6] Display VIP Guest List       |");
+            System.out.println("|    [7] Exit                         |");
+            System.out.println("|                                     |");
+            System.out.println("*=====================================*");
+    }
+    
+
+    public void clearConsole(){
+            try {
+                String os = System.getProperty("os.name").toLowerCase();
+                if (os.contains("win")) {
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+                    new ProcessBuilder("clear").inheritIO().start().waitFor();
+                }
+            } catch (Exception e) {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+    }
     public static void main(String[] args) {
         SmartCampusSystem system = new SmartCampusSystem();
         Scanner scanner = new Scanner(System.in);
@@ -159,21 +187,10 @@ public class SmartCampusSystem {
         System.out.println(" ");
 
 
+
         while (true) {
-            // Clear screen (console)
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-            System.out.println("*=====================================*");
-            System.out.println("|                                     |");
-            System.out.println("|    [1] Add Walk-In Participant.     |");
-            System.out.println("|    [2] Cancel Walk-In Check-In.     |");
-            System.out.println("|    [3] Display Walk-In Queue.       |");
-            System.out.println("|    [4] Add VIP Guest                |");
-            System.out.println("|    [5] Remove VIP Guest             |");
-            System.out.println("|    [6] Display VIP Guest List       |");
-            System.out.println("|    [7] Exit                         |");
-            System.out.println("|                                     |");
-            System.out.println("*=====================================*");
+            system.clearConsole();
+            system.displayMenu();
             System.out.print("| Select option: ");
   
             int choice = scanner.nextInt();
