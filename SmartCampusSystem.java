@@ -156,21 +156,7 @@ public class SmartCampusSystem {
             System.out.println("|                                     |");
             System.out.println("*=====================================*");
     }
-    
 
-    public void clearConsole(){
-            try {
-                String os = System.getProperty("os.name").toLowerCase();
-                if (os.contains("win")) {
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-                } else {
-                    new ProcessBuilder("clear").inheritIO().start().waitFor();
-                }
-            } catch (Exception e) {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-    }
     public static void main(String[] args) {
         SmartCampusSystem system = new SmartCampusSystem();
         Scanner scanner = new Scanner(System.in);
@@ -189,7 +175,6 @@ public class SmartCampusSystem {
 
 
         while (true) {
-            system.clearConsole();
             system.displayMenu();
             System.out.print("| Select option: ");
   
